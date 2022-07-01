@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 23:03:02 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/06/29 23:21:41 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:23:59 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ t_stack *create_stack(int size)
     return (stack);
 }
 
-void    push(t_stack *stack, int value)
+t_stack    *push(t_stack *stack, int value)
 {
     stack->top++;
     stack->tab[stack->top] = value;
+    return (stack);
 }
 
 int pop(t_stack *stack)
@@ -38,4 +39,17 @@ int pop(t_stack *stack)
     stack->top--;
     value = stack->tab[stack->top];
     return (value);
+}
+char *ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

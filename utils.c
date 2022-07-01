@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:06:14 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/06/29 16:28:22 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:44:34 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ static char	**ft_free(char ***ptr, int i)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	int		i;
 	char	**ptr;
@@ -140,4 +140,43 @@ char	**ft_split(char const *s, char c)
 	}
 	ptr[i] = NULL;
 	return (ptr);
+}
+
+int ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*res;
+
+	if (s1 && s2)
+	{
+		i = ft_strlen(s1);
+		j = ft_strlen(s2);
+		k = -1;
+		res = (char *)malloc(i + j + 1);
+		if (!res)
+			return (NULL);
+		while (s1[++k])
+			res[k] = s1[k];
+		k = -1;
+		while (s2[++k])
+		{
+			res[i] = s2[k];
+			i++;
+		}
+		res[i] = '\0';
+		return (res);
+	}
+	return (NULL);
 }
