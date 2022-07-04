@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 21:45:25 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 17:40:33 by cbourajl         ###   ########.fr       */
+/*   Created: 2022/07/04 17:07:33 by cbourajl          #+#    #+#             */
+/*   Updated: 2022/07/04 17:18:55 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int main(int ac, char **av)
+void    sa(t_stack *a)
 {
-    int i;
-    t_stack *a;
-    t_stack *b;
-    char    **args;
+    int tmp;
 
-    args = get_args(ac, av);
-    if (!args)
-        return (0);
-    a = create_stack(ac - 1);
-    b = create_stack(ac - 1);
-    i = 2;
-    while (i <= ac)
+    if (a->size > 1)
     {
-        push(a, ft_atoi(args[ac - i]));
-        i++;
+        tmp = a->tab[0];
+        a->tab[0] = a->tab[1];
+        a->tab[1] = tmp;
     }
-    print_stack(a);
+}
+
+void    sb(t_stack *b)
+{
+    int tmp;
+
+    if (b->size > 1)
+    {
+        tmp = b->tab[0];
+        b->tab[0] = b->tab[1];
+        b->tab[1] = tmp;
+    }
+}
+
+void    ss(t_stack *a, t_stack *b)
+{
+    sa(a);
+    sb(b);
 }

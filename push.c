@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 21:45:25 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 17:40:33 by cbourajl         ###   ########.fr       */
+/*   Created: 2022/07/04 17:20:34 by cbourajl          #+#    #+#             */
+/*   Updated: 2022/07/04 17:28:22 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int main(int ac, char **av)
+void    pa(t_stack *a, t_stack *b)
 {
-    int i;
-    t_stack *a;
-    t_stack *b;
-    char    **args;
-
-    args = get_args(ac, av);
-    if (!args)
-        return (0);
-    a = create_stack(ac - 1);
-    b = create_stack(ac - 1);
-    i = 2;
-    while (i <= ac)
+    if (b->size > 0)
     {
-        push(a, ft_atoi(args[ac - i]));
-        i++;
+        push(a, b->tab[b->size - 1]);
+        b->size--;
     }
-    print_stack(a);
+}
+
+void    pb(t_stack *a, t_stack *b)
+{
+    if (a->size > 0)
+    {
+        push(b, a->tab[a->size - 1]);
+        a->size--;
+    }
 }
