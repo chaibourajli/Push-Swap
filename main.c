@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:45:25 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/01 17:51:01 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:22:30 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,21 @@
 int main(int ac, char **av)
 {
     int i;
-    int k = 0;
-    int j;
-    char *str;
-    char **splitted;
-    t_stack **tab;
+    t_stack *a;
+    t_stack *b;
+    char    **args;
 
-    splitted = (char **)malloc(sizeof(char *) * ac);
-    str = (char *)malloc(sizeof(char) * ac * 100) ;
-    i = 1;
-    while (--ac >= i)
+    args = get_args(ac, av);
+    if (!args)
+        return (0);
+    a = create_stack(ac - 1);
+    b = create_stack(ac - 1);
+    i = 2;
+    while (i <= ac)
     {
-        str = ft_strjoin(str, av[ac]);
-        str = ft_strjoin(str, " ");
-    }
-    splitted = ft_split(str, ' ');
-    i = 0;
-    while (splitted[i])
-    {
-        printf("%s\n", splitted[i]);
+        push(a, ft_atoi(args[ac - i]));
         i++;
     }
-    free (splitted);
-    free (str);
+    print_stack(a);
+    print_stack(b);
 }

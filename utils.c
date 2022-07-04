@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:06:14 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/01 17:44:34 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:22:10 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,4 +179,21 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (res);
 	}
 	return (NULL);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:08:48 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/06/28 21:41:23 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 14:11:28 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int check_args(int ac, char **av)
     int i;
 
     i = 1;
+    if (ac < 2)
+        return (0);
     while (i < ac)
     {
         if (!check_int(av[i]))
@@ -62,4 +64,22 @@ int check_args(int ac, char **av)
     if (!check_double(ac, av))
         return (0);
     return (1);
+}
+
+char    **get_args(int ac, char **av)
+{
+    char    **splitted;
+    char    *str;
+
+    if (check_args(ac, av) == 0)
+        return (NULL);
+    splitted = (char **)malloc(sizeof(char *) * ac);
+    str = (char *)malloc(sizeof(char) * ac * 100);
+    while (--ac >= 1)
+    {
+        str = ft_strjoin(str, av[ac]);
+        str = ft_strjoin(str, " ");
+    }
+    splitted = ft_split(str, ' ');
+    return (splitted);
 }
