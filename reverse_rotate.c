@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:23:11 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 18:13:10 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:16:00 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void    *rra(t_stack *a)
 {
     int tmp;
-    int size;
+    unsigned int size;
 
     size = a->size;
     if (a->size > 1)
@@ -35,7 +35,7 @@ void    *rra(t_stack *a)
 void    rrb(t_stack *b)
 {
     int tmp;
-    int size;
+    unsigned int size;
 
     size = b->size;
 
