@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:03:09 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 18:12:44 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:24:12 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,12 @@ void    sb(t_stack *b);
 void    ss(t_stack *a, t_stack *b);
 void    pa(t_stack *a, t_stack *b);
 void    pb(t_stack *a, t_stack *b);
-void    *rra(t_stack *a);
+void    rra(t_stack *a);
 void    rrb(t_stack *b);
+void    rrr(t_stack *a, t_stack *b);
+void    rb(t_stack *b);
+void    ra(t_stack *a);
+void    rr(t_stack *a, t_stack *b);
 int     ft_atoi(char *str);
 int     check_int(char *str);
 int     check_double(int ac, char **av);

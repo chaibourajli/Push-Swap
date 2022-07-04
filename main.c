@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:45:25 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 17:40:33 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:25:38 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@ int main(int ac, char **av)
         push(a, ft_atoi(args[ac - i]));
         i++;
     }
-    print_stack(a);
 }

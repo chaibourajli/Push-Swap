@@ -1,6 +1,6 @@
 
 NAME = push_swap
-SRC = main.c check_args.c stack_operations.c utils.c swap.c push.c reverse_rotate.c
+SRC = main.c check_args.c stack_operations.c utils.c swap.c push.c reverse_rotate.c rotate.c
 
 all : $(NAME)
 $(NAME) :
