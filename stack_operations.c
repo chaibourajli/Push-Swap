@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:55:31 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 16:24:14 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:31:48 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_stack *create_stack(unsigned int size)
 
 void    print_stack(t_stack *stack)
 {
-    int i;
+    unsigned int i;
     
     i = 0;
     if (stack->top == -1)

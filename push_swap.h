@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:03:09 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 16:22:17 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:37:52 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int check_int(char *str);
 int check_double(int ac, char **av);
 int check_args(int ac, char **av);
 char	*ft_strjoin(char *s1, char *s2);
-static char	*ft_fill(char *s, char c);
-static char	**ft_free(char ***ptr, int i);
 char	**ft_split(char *s, char c);
-static int	word_count(char *s, char c);
 char *ft_strcpy(char *dest, char *src);
 int ft_strlen(char *str);
 char    **get_args(int ac, char **av);
