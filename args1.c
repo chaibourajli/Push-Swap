@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   args1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:08:48 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 14:11:28 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:23:37 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,58 +28,30 @@ int check_int(char *str)
     return (1);
 }
 
-int check_double(int ac, char **av)
+void    free_str(char **str)
 {
     int i;
-    int j;
 
-    i = 1;
-    while (i < ac)
+    i = 0;
+    while (str[i])
     {
-        j = i + 1;
-        while (j < ac)
-        {
-            if (ft_atoi(av[i]) == ft_atoi(av[j]))
-                return (0);
-            j++;
-        }
+        free(str[i]);
         i++;
     }
-    return (1);    
+    free(str);
 }
 
-int check_args(int ac, char **av)
+int in_range(long nb)
 {
-    int i;
-
-    i = 1;
-    if (ac < 2)
-        return (0);
-    while (i < ac)
-    {
-        if (!check_int(av[i]))
-            return (0);
-        i++;
-    }
-    if (!check_double(ac, av))
+    if (nb <= MIN_INT || nb >= MAX_INT)
         return (0);
     return (1);
 }
 
-char    **get_args(int ac, char **av)
+void    create_stack(char *str, t_stack **head)
 {
-    char    **splitted;
-    char    *str;
+    t_stack *new;
 
-    if (check_args(ac, av) == 0)
-        return (NULL);
-    splitted = (char **)malloc(sizeof(char *) * ac);
-    str = (char *)malloc(sizeof(char) * ac * 100);
-    while (--ac >= 1)
-    {
-        str = ft_strjoin(str, av[ac]);
-        str = ft_strjoin(str, " ");
-    }
-    splitted = ft_split(str, ' ');
-    return (splitted);
+    new = newstack(ft_atoi(str));
+    addback(head, new);
 }

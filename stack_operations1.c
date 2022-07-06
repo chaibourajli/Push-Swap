@@ -6,55 +6,71 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:55:31 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/04 16:31:48 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:11:47 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h" 
   
-int *push(t_stack *stack, int val) 
-{ 
-    if(stack->top == (int)(stack->size - 1)) 
-        return(0);
-    stack->tab[++stack->top] = val;
-    return (&stack->tab[stack->top]); 
+t_stack *newstack(long nb)
+{
+    t_stack *new;
+    if (!new)
+        return (NULL);
+    new->value = nb;
+    new->next = NULL;
+    return (new);
 }
 
-int *pop(t_stack *stack) 
-{ 
-    if (stack->top == -1) 
-        return (0); 
-    return (&stack->tab[stack->top--]); 
-}
+int stacksize(t_stack *stack)
+{
+    int i;
 
-t_stack *create_stack(unsigned int size) 
-{ 
-    t_stack *stack;
-    stack = (t_stack *)malloc(sizeof(*stack)); 
-    if (!(stack))
-        return (0); 
-    stack->size = size; 
-    stack->top = -1; 
-    stack->tab = malloc(size * sizeof(*(stack->tab))); 
-    if (!(stack->tab))
-    return (NULL); 
-    return (stack); 
+    i = 0;
+    if (!stack)
+        return (0);
+    while (stack)
+    {
+        stack = stack->next;
+        i++;
+    }
+    return (i);
 }
 
 void    print_stack(t_stack *stack)
 {
-    unsigned int i;
-    
-    i = 0;
-    if (stack->top == -1)
-    {
-        ft_putstr("(empty)");
+    if (!stack)
         return ;
-    }
-    while (i < stack->size)
+    while (stack)
     {
-        ft_putnbr(stack->tab[i]);
+        ft_putnbr(stack->value);
         ft_putchar('\n');
-        i++;
+        stack = stack->next;
+    }
+}
+
+void    addback(t_stack **stack, t_stack *new)
+{
+    t_stack *tmp;
+
+    if (!*stack)
+        *stack = new;
+    else
+    {
+        tmp = *stack;
+        while (tmp->next)
+            tmp = tmp->next;
+        tmp->next = new;
+    }
+}
+
+void    addfront(t_stack **stack, t_stack *new)
+{
+    if (!*stack && !stack)
+        return ;
+    else
+    {
+        new->next = *stack;
+        *stack = new;
     }
 }

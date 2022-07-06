@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/cbourajl/Desktop/Push-Swap'
+gcc -c main.c check_args.c stack_operations.c utils.c swap.c push.c reverse_rotate.c rotate.c
+gcc -Wall -Wextra -Werror  *.o  -o push_swap
+make: Leaving directory `/Users/cbourajl/Desktop/Push-Swap'
+ 
