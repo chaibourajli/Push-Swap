@@ -6,7 +6,7 @@
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 21:03:09 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/06 17:02:53 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:39:55 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    addback(t_stack **stack, t_stack *new);
 void    free_str(char **str);
 int     ft_atoi(char *s);
 int	    ft_strlcpy(char *dest, const char *src, int size);
-int	ft_strlcpy(char *dest, const char *src, int size);
+int     ft_strlcpy(char *dest, const char *src, int size);
 int     check_int(char *str);
 int     in_range(long nb);
 int     ft_strlen(char *str);
