@@ -3,104 +3,104 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbourajl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 13:34:42 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/01/08 16:42:40 by cbourajl         ###   ########.fr       */
+/*   Updated: 2022/07/13 17:03:30 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
+#include "push_swap.h"
 
-char	*get_line(char *str)
+int	ft_checkline(char *result)
 {
-	int		i;
-	int		j;
-	char	*res;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!str[i])
-		return (NULL);
-	while (str[i] != '\0' && str[i] != '\n')
+	while (result[i] != '\0' && result[i] != '\n')
 		i++;
-	res = (char *)malloc(sizeof(char) * (i + 2));
-	if (!res)
-		return (NULL);
-	while (str[j] != '\0' && str[j] != '\n')
-	{
-		res[j] = str[j];
-		j++;
-	}
-	if (str[j] == '\n')
-	{
-		res[j] = str[j];
-		j++;
-	}
-	res[j] = '\0';
-	return (res);
+	return (i);
 }
 
-char	*next_line(char *str)
+int	ft_error(ssize_t ret, char *buf, char *result)
 {
-	int		i;
-	int		j;
-	char	*res;
-
-	i = 0;
-	j = 0;
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	if (!str[i])
+	if (ret < 0)
 	{
-		free (str);
-		return (NULL);
+		free(buf);
+		if (result != NULL)
+			free(result);
+		return (1);
 	}
-	res = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
-	if (!res)
-		return (NULL);
-	i++;
-	while (str[i] != '\0')
-		res[j++] = str[i++];
-	res[j] = '\0';
-	free (str);
-	return (res);
+	else if (ret == 0 && result == NULL)
+	{
+		free(buf);
+		return (1);
+	}
+	else if (result[0] == '\0')
+	{
+		free(result);
+		free(buf);
+		return (1);
+	}
+	free(buf);
+	return (0);
 }
 
-char	*read_line(int fd, char *str)
+char	*ft_remp(char *result, char *buf, int fd)
 {
-	char	*buffer;
-	ssize_t	rd_bytes;
+	char	*temp;
+	ssize_t	ret;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
+	buf = (char *)malloc(sizeof(char) * 2);
+	if (buf == NULL)
 		return (NULL);
-	rd_bytes = 1;
-	while (!ft_strchr(str, '\n') && rd_bytes != 0)
+	ret = read(fd, buf, 1);
+	while (ret > 0)
 	{
-		rd_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (rd_bytes == -1)
-		{
-			free(buffer);
-			return (NULL);
+		buf[ret] = 0;
+		if (result == 0)
+			result = ft_strdup(buf);
+		else
+		{	
+			temp = ft_strjoin(result, buf);
+			free(result);
+			result = temp;
 		}
-		buffer[rd_bytes] = '\0';
-		str = ft_strjoin(str, buffer);
+		if (ft_strchr(result, '\n'))
+			break ;
+		ret = read(fd, buf, 1);
 	}
-	free(buffer);
-	return (str);
+	if (ft_error(ret, buf, result))
+		return (0);
+	return (result);
 }
 
 char	*get_next_line(int fd)
 {
+	static char	*result;
+	char		*temp;
 	char		*line;
-	static char	*str;
+	char		*buf;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	str = read_line(fd, str);
-	if (!str)
+	if (fd == -1)
 		return (NULL);
-	line = get_line(str);
-	str = next_line(str);
+	buf = NULL;
+	result = ft_remp(result, buf, fd);
+	if (!result)
+		return (NULL);
+	if (result[ft_checkline(result)] == '\n')
+	{
+		line = ft_substr(result, 0, ft_checkline(result) + 1);
+		temp = ft_strdup(&result[ft_checkline(result) + 1]);
+		free(result);
+		result = temp;
+	}
+	else
+	{
+		line = ft_strdup(result);
+		free(result);
+		exit(1);
+	}
 	return (line);
 }

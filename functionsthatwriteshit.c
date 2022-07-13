@@ -5,14 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbourajl <cbourajl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 17:00:18 by cbourajl          #+#    #+#             */
-/*   Updated: 2022/07/06 17:01:13 by cbourajl         ###   ########.fr       */
+/*   Created: 2022/07/06 23:34:27 by cbourajl          #+#    #+#             */
+/*   Updated: 2022/07/06 23:41:12 by cbourajl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 void	ft_putnbr(int n)
 {
-	int	a;
+	int		a;
 	char	c;
 
 	a = n;
